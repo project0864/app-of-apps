@@ -12,9 +12,12 @@ spec:
     chart: cert-manager
     targetRevision: 'v1.11.0'
     helm:
-      parameters:
-        - name: installCRDs
-          value: 'true'
+      releaseName: cert-manager
+      valueFiles:
+      - $values/cert-manager/values.yaml
+  - repoURL: 'https://github.com/project0864/values.git'
+    targetRevision: HEAD
+    ref: values
   destination:
     namespace: cert-manager
     server: "https://kubernetes.default.svc"
